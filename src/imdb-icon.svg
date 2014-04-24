@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="35px" height="20px" viewBox="0 0 35 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.1 (7597) - http://www.bohemiancoding.com/sketch -->
+    <title>imdb 2</title>
+    <description>Created with Sketch.</description>
+    <defs></defs>
+    <g id="Movie-Screen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Desktop" sketch:type="MSArtboardGroup" transform="translate(-253.000000, -401.000000)" stroke="#F8D01C" stroke-width="4">
+            <path d="M253,417.036619 L253,404.963381 L253,404.963381 C254.739077,404.707054 256.179472,403.129374 256.743941,401 L283.256059,401 C283.873813,403.330385 285.540672,405 287.5,405 C287.669005,405 287.835833,404.987578 288,404.963381 L288,404.963381 L288,417.036619 L288,417.036619 C287.835833,417.012422 287.669005,417 287.5,417 C285.540672,417 283.873813,418.669615 283.256059,421 L256.743941,421 C256.179472,418.870626 254.739077,417.292946 253,417.036619 Z" id="imdb-2" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

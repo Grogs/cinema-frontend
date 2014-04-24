@@ -1,0 +1,126 @@
+<!doctype html>
+
+<head>
+<title>London - West India Quay</title>
+
+<style type="text/css">
+	body {
+		
+	}
+</style>
+
+<style type="text/css">
+.film-container {
+    width: 296px;
+    height: 434px;
+    position: relative;
+    border: solid 4px #4F4F4F;
+    overflow: hidden;
+    margin: 5px;
+    display: inline-block;
+}
+
+.title {
+	font-family: HelveticaNeue-Bold;
+	font-size: 36px;
+	color: #E5E5E5;
+	line-height: 44px;
+	text-shadow: 0px 2px 6px rgba(0,0,0,0.5);
+	text-align: center;
+	margin-top: 20px;
+}
+
+.film, 
+.film-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.film {
+    background: rgba(0,0,0,0.5);
+    z-index: -9;
+}
+
+.film-background {
+    z-index: -10;
+    -webkit-filter: blur(7px);
+    margin: 0 -1px 0 0;
+}
+
+.ratings {
+	margin-top: 30px;
+	text-align: center;
+}
+.rating {
+	font-family: HelveticaNeue-Bold;
+	font-size: 26px;
+	color: #FFFFFF;
+	line-height: 32px;
+	/* imdb rating: */
+	margin: 10px;
+	display: inline-block;
+}
+.rt {
+	background-image: url(rt-icon.svg);
+	background-repeat: no-repeat;
+	padding-left: 37px;
+}
+.imdb {
+	background-image: url(imdb-icon.png);
+	background-repeat: no-repeat;
+	padding-left: 46px;
+}
+
+.times {
+	margin: 30px 20px 0 20px;
+}
+.time {
+	font-family: HelveticaNeue-Bold;
+	font-size: 20px;
+	color: #E5E5E5;
+	line-height: 25px;
+	padding: 4px;
+	border-radius: 10px;
+	background: #2A353F;
+	border: 5px solid #00ADFF;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+</style>
+</head>
+
+<body>
+	<div class="film-container">
+	    <div class="film">
+	        <div class="title">The Amazing Spider-Man 2</div>
+	        <div class="ratings">
+	        	<div class="rating imdb">7.3</div>
+	        	<div class="rating rt">73</div>
+	        </div>
+	        <div class="times">
+	        	<div class="time">14:30</div>
+	        	<div class="time">14:30</div>
+	        	<div class="time">14:30</div>
+	        </div>
+	    </div>
+	    <img class="film-background" src="http://www.cineworld.co.uk/assets/media/films/6589_poster_large.jpg"/>
+	</div>
+	<div class="film-container">
+	    <div class="film">
+	        <div class="title">Locke</div>
+	        <div class="ratings">
+	        	<div class="rating imdb">7.3</div>
+	        	<div class="rating rt">73</div>
+	        </div>
+	        <div class="times">
+	        	<div class="time">14:30</div>
+	        	<div class="time">14:30</div>
+	        </div>
+	    </div>
+	    <img class="film-background" src="http://www.cineworld.co.uk/assets/media/films/7223_poster_large.jpg"/>
+	</div>
+</body>

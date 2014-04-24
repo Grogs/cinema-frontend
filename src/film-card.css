@@ -1,0 +1,32 @@
+.film-container {
+    width: 296px;
+    height: 434px;
+    position: relative;
+}
+
+.title {
+    font-family: HelveticaNeue-Bold;
+    font-size: 36px;
+    color: #E5E5E5;
+    line-height: 44px;
+    text-align: center;
+}
+
+.film, 
+.film-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.film {
+    background: rgba(0,0,0,0.5);
+    z-index: -9;
+}
+
+.film-background {
+    z-index: -10;
+    -webkit-filter: blur(7px)
+}

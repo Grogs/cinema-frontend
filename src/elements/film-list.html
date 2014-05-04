@@ -1,0 +1,30 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<polymer-element name="film-list" attributes="movies">
+	<template>
+		<div class="films-list-container"> 
+		    <template repeat="{{ movie in movies }}">  
+		    	<!-- | sortBy(sortColumn) -->
+		      <film-card 
+		      		name="{{ movie.name }}" 
+		      		poster="{{ movie.poster }}" 
+		      		times="{{ movie.times }}" 
+		      		ratings="{{ movie.ratings }}" 
+		      		></film-card>
+		    </template>
+		</div>
+	</template>
+	<script>
+	Polymer('film-list', {
+		movies: [], 
+		sortKey: 'title'
+	})
+	</script>
+	<style type="text/css">
+
+	</style>
+</polymer-element>
+
+
+
+	

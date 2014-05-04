@@ -4,7 +4,10 @@
   <title>London - West India Quay</title>
   <script src="bower_components/platform/platform.js"></script>
   <script src="bower_components/requirejs/require.js"></script>
+  <script src="bower_components/finchjs/finch.js"></script>
+  <script src="jquery-1.9.1.js"></script>
   <link rel="import" href="elements/film-card.html">
+  <link rel="import" href="elements/film-list.html">
   <!-- <script src="config.js"></script> -->
 
   <style type="text/css">
@@ -13,11 +16,73 @@
     }
   </style>
 
+  <script type="text/javascript">
+  //depends on jQuery
+  var DummyMovieService = {
+    getMovies: function(cinemaId) {
+      return $.get('example_cineworld_data.json')
+    }
+  }
+  var RealMovieService = {
+    getMovies: function(cinemaId) {
+      return $.get('/api/cinema/'+cinemaId)
+    }
+  }
+  var MovieService = DummyMovieService
+
+  // var moviesToCards = function(movies) {
+  //   console.log("Movies JSON",movies)
+  //   var fakeTimes = ['4:20','13:37']
+  //   var fakeRatings = {'rt':99,'imdb':0.99}
+  //   return movies.map(function(movie) {
+  //     var card = document.createElement('film-card')
+  //     card.times = fakeTimes
+  //     card.ratings = fakeRatings
+  //     card.name = movie.title
+  //     card.poster = "imdb-icon.png"
+  //     return card
+  //   })
+  // }
+
+  var addToMoviesList = function(films) {
+    function filmToMovie(f) {
+      var fakeTimes = ['wq','qw']
+      var fakeRatings = {'rt':12,'imdb':34}
+      return {
+        times: fakeTimes,
+        ratings: fakeRatings,
+        name: f.title
+      }
+    }
+    document.querySelector("#films-list").movies = films.map(filmToMovie)
+  }
+
+  //require.define(['crossroads',''])
+  $(function() {
+    Finch.route("cinema/:id", function(id) {
+      // var cards = MovieService.getMovies(66).then(moviesToCards)
+      // cards.then(function(ls) {
+      //   $("#films").empty().append(ls)
+      // })
+      var cards = MovieService.getMovies(66).then(addToMoviesList)
+    })
+    Finch.listen()
+  })
+
+  function sortFilms() {
+    document.querySelector("#films-list").movies.sort(function(a,b) {return a.ratings.imdb < b.ratings.imdb})
+  }
+  </script>
+
+
+
 </head>
 
 <body> 
+  <a href="#/cinema/66">Click me!</a>
+  <a href="javascript:sortFilms()">Sort?</a>
   <div id="films">
-    <film-card 
+<!--     <film-card 
       name="Locke" 
       poster="http://www.cineworld.co.uk/assets/media/films/7223_poster_large.jpg" 
       times="['2:15','4:20']" 
@@ -25,8 +90,22 @@
 
     <film-card name="The Amazing Spider-Man 2" poster="http://www.cineworld.co.uk/assets/media/films/6589_poster_large.jpg" times="['3:15','4:20']" ratings="{'imdb' : 7.3, 'rt':73}"></film-card>
 
-    <film-card name="The Wolf Of Wall Street" poster="http://www.cineworld.co.uk/assets/media/films/7282_poster_large.jpg" times="['3:15','7:20']" ratings="{'imdb' : 8.3, 'rt':73}"></film-card>
+    <film-card name="The Wolf Of Wall Street" poster="http://www.cineworld.co.uk/assets/media/films/7282_poster_large.jpg" times="['3:15','7:20']" ratings="{'imdb' : 8.3, 'rt':73}"></film-card> -->
   
+
+    <film-list id="films-list" 
+      movies="[
+
+        {'name': 'The Amazing Spider-Man 2', 'poster': 'http://www.cineworld.co.uk/assets/media/films/6589_poster_large.jpg', 'times': ['3:15','4:20'], 'ratings': {'imdb' : 7.2, 'rt':73}},
+
+        {'name': 'Locke', 'poster': 'http://www.cineworld.co.uk/assets/media/films/7223_poster_large.jpg', 'times': ['2:15','4:20'], 'ratings': {'imdb' : 7.3, 'rt':53}}
+      ]" 
+    ></film-list>
+
+    <script type="text/javascript">
+      // document.querySelector("#films-list").movies = [{ name: 'The Amazing Spider-Man 2', poster: 'http://www.cineworld.co.uk/assets/media/films/6589_poster_large.jpg', times: ['3:15','4:20'], ratings: {imdb : 7.3, rt:73} }]
+    </script>
+
   </div>
 
 </body>

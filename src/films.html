@@ -30,19 +30,6 @@
   }
   var MovieService = DummyMovieService
 
-  // var moviesToCards = function(movies) {
-  //   console.log("Movies JSON",movies)
-  //   var fakeTimes = ['4:20','13:37']
-  //   var fakeRatings = {'rt':99,'imdb':0.99}
-  //   return movies.map(function(movie) {
-  //     var card = document.createElement('film-card')
-  //     card.times = fakeTimes
-  //     card.ratings = fakeRatings
-  //     card.name = movie.title
-  //     card.poster = "imdb-icon.png"
-  //     return card
-  //   })
-  // }
 
   var addToMoviesList = function(films) {
     function filmToMovie(f) {
@@ -57,13 +44,9 @@
     document.querySelector("#films-list").movies = films.map(filmToMovie)
   }
 
-  //require.define(['crossroads',''])
+  //require.define(['Finch',''])
   $(function() {
     Finch.route("cinema/:id", function(id) {
-      // var cards = MovieService.getMovies(66).then(moviesToCards)
-      // cards.then(function(ls) {
-      //   $("#films").empty().append(ls)
-      // })
       var cards = MovieService.getMovies(66).then(addToMoviesList)
     })
     Finch.listen()
@@ -82,16 +65,6 @@
   <a href="#/cinema/66">Click me!</a>
   <a href="javascript:sortFilms()">Sort?</a>
   <div id="films">
-<!--     <film-card 
-      name="Locke" 
-      poster="http://www.cineworld.co.uk/assets/media/films/7223_poster_large.jpg" 
-      times="['2:15','4:20']" 
-      ratings="{'imdb' : 7.3, 'rt':53}"></film-card>
-
-    <film-card name="The Amazing Spider-Man 2" poster="http://www.cineworld.co.uk/assets/media/films/6589_poster_large.jpg" times="['3:15','4:20']" ratings="{'imdb' : 7.3, 'rt':73}"></film-card>
-
-    <film-card name="The Wolf Of Wall Street" poster="http://www.cineworld.co.uk/assets/media/films/7282_poster_large.jpg" times="['3:15','7:20']" ratings="{'imdb' : 8.3, 'rt':73}"></film-card> -->
-  
 
     <film-list id="films-list" 
       movies="[
@@ -101,10 +74,6 @@
         {'name': 'Locke', 'poster': 'http://www.cineworld.co.uk/assets/media/films/7223_poster_large.jpg', 'times': ['2:15','4:20'], 'ratings': {'imdb' : 7.3, 'rt':53}}
       ]" 
     ></film-list>
-
-    <script type="text/javascript">
-      // document.querySelector("#films-list").movies = [{ name: 'The Amazing Spider-Man 2', poster: 'http://www.cineworld.co.uk/assets/media/films/6589_poster_large.jpg', times: ['3:15','4:20'], ratings: {imdb : 7.3, rt:73} }]
-    </script>
 
   </div>
 

@@ -27,6 +27,10 @@
 	})
 	</script>
 	<style type="text/css">
+	.film-container:hover {
+		-webkit-transform: scale(1.05,1.07);
+	}
+
 	.film-container {
 	    width: 296px;
 	    height: 434px;
@@ -35,6 +39,7 @@
 	    overflow: hidden;
 	    margin: 5px;
 	    display: inline-block;
+	    transition: all ease 0.2s;
 	}
 
 	.title {
@@ -63,7 +68,9 @@
 
 	.film-background {
 	    z-index: -10;
-	    -webkit-filter: blur(7px);
+	    -webkit-filter: blur(3px);
+	    /* Hack to force 3d acceleration */
+        -webkit-transform: translate3d(0, 0, 0);
 	    margin: 0 -1px 0 0;
 	}
 

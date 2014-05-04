@@ -1,21 +1,22 @@
 {
-    "name": "Placeholder",
-        "version": "0.1",
-        "authors": [
-            "Greg Dorrell <greg@dorrell.me>"
-        ],
-        "main": "index.html",
-        "license": "GPLv2",
-        "homepage": "http://cinema.gregd.me",
-        "ignore": [
-            "**/.*",
-            "node_modules",
-            "bower_components",
-            "test",
-            "tests"
-        ],
-        "dependencies": {
-            "polymer": "~0.2.2",
-            "requirejs": "~2.1.9"
-        }
+  "name": "Placeholder",
+  "version": "0.1",
+  "authors": [
+    "Greg Dorrell <greg@dorrell.me>"
+  ],
+  "main": "index.html",
+  "license": "GPLv2",
+  "homepage": "http://cinema.gregd.me",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.2.2",
+    "requirejs": "~2.1.9",
+    "finchjs": "~0.5.14"
+  }
 }

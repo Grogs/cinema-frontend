@@ -25,7 +25,7 @@
   }
   var RealMovieService = {
     getMovies: function(cinemaId) {
-      return $.get('/api/cinema/'+cinemaId)
+      return $.get('/cinema-api/cinema/'+cinemaId)
     }
   }
   var MovieService = DummyMovieService
@@ -34,18 +34,18 @@
   var addToMoviesList = function(films) {
     function filmToMovie(f) {
       var fakeTimes = ['wq','qw']
-      var fakeRatings = {'rt':12,'imdb':34}
       return {
         times: fakeTimes,
-        ratings: fakeRatings,
-        name: f.title
+        ratings: {imdb: '-', rt: f.criticRating},
+        name: f.title, 
+        imdbUrl: f.imdbId ? "http://www.imdb.com/title/tt" + f.imdbId : undefined
       }
     }
     document.querySelector("#films-list").movies = films.map(filmToMovie)
   }
 
   //require.define(['Finch',''])
-  $(function() {
+  $(window).load(function() {
     Finch.route("cinema/:id", function(id) {
       var cards = MovieService.getMovies(66).then(addToMoviesList)
     })

@@ -2,11 +2,14 @@
 
 <polymer-element name="film-card" attributes="name poster ratings times">
 	<template>
+		<style type="text/css">
+			a { color: white; }
+		</style>
 		<div class="film-container">
 		    <div class="film">
 		        <div class="title">{{ name }}</div>
 		        <div class="ratings">
-		        	<div class="rating imdb">{{ ratings.imdb }}</div>
+		        	<div class="rating imdb"><a href="{{ imdbUrl }}">{{ ratings.imdb }}</a></div>
 		        	<div class="rating rt">{{ ratings.rt }}</div>
 		        </div>
 		        <div class="times">
@@ -23,10 +26,12 @@
 		title: "Undefined",
 		ratings: {"rt":00, "imdb":0.0},
 		times: ["00:00", "99:99"],
-		poster: "http://college-social.com/content/uploads/2014/03/not-found.png"
+		poster: "http://college-social.com/content/uploads/2014/03/not-found.png",
+		imdbUrl: '#'
 	})
 	</script>
 	<style type="text/css">
+
 	.film-container:hover {
 		-webkit-transform: scale(1.05,1.07);
 	}

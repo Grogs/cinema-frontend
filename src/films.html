@@ -33,48 +33,41 @@
 
   var addToMoviesList = function(films) {
     function filmToMovie(f) {
-      var fakeTimes = ['wq','qw']
+      var fakeTimes = ['todo']
       return {
         times: fakeTimes,
         ratings: {imdb: '-', rt: f.criticRating},
         name: f.title, 
-        imdbUrl: f.imdbId ? "http://www.imdb.com/title/tt" + f.imdbId : undefined
+        imdbUrl: (f.imdbId ? "http://www.imdb.com/title/tt" + f.imdbId : undefined),
+        poster: f.posterUrl
       }
     }
     document.querySelector("#films-list").movies = films.map(filmToMovie)
   }
 
-  //require.define(['Finch',''])
+  function sortFilms() {
+    document.querySelector("#films-list").movies.sort(function(a,b) {return (b.ratings.rt || 0) - (a.ratings.rt || 0)})
+  }
+  </script>
+<script type="text/javascript">
+//Routing, requires FinchJS.
+    //require.define(['Finch',''])
   $(window).load(function() {
     Finch.route("cinema/:id", function(id) {
       var cards = MovieService.getMovies(66).then(addToMoviesList)
     })
     Finch.listen()
   })
-
-  function sortFilms() {
-    document.querySelector("#films-list").movies.sort(function(a,b) {return a.ratings.imdb < b.ratings.imdb})
-  }
-  </script>
+</script>
 
 
 
 </head>
 
 <body> 
-  <a href="#/cinema/66">Click me!</a>
-  <a href="javascript:sortFilms()">Sort?</a>
+  <!-- <a href="#/cinema/66">Click me!</a> -->
+  <a href="javascript:sortFilms()">Sort by RT rating</a>
   <div id="films">
-
-    <film-list id="films-list" 
-      movies="[
-
-        {'name': 'The Amazing Spider-Man 2', 'poster': 'http://www.cineworld.co.uk/assets/media/films/6589_poster_large.jpg', 'times': ['3:15','4:20'], 'ratings': {'imdb' : 7.2, 'rt':73}},
-
-        {'name': 'Locke', 'poster': 'http://www.cineworld.co.uk/assets/media/films/7223_poster_large.jpg', 'times': ['2:15','4:20'], 'ratings': {'imdb' : 7.3, 'rt':53}}
-      ]" 
-    ></film-list>
-
+    <film-list id="films-list"></film-list>
   </div>
-
 </body>

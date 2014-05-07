@@ -33,13 +33,14 @@
 
   var addToMoviesList = function(films) {
     function filmToMovie(f) {
-      var fakeTimes = ['todo']
+      var fakeTimes = ['Showtimes unavailable']
       return {
         times: fakeTimes,
         ratings: {imdb: '-', rt: f.criticRating},
         name: f.title, 
         imdbUrl: (f.imdbId ? "http://www.imdb.com/title/tt" + f.imdbId : undefined),
-        poster: f.posterUrl
+        poster: f.posterUrl,
+        format: f.format
       }
     }
     document.querySelector("#films-list").movies = films.map(filmToMovie)

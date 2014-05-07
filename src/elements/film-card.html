@@ -1,11 +1,11 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="film-card" attributes="name poster ratings times imdbUrl">
+<polymer-element name="film-card" attributes="name poster ratings times imdbUrl format">
 	<template>
 		<style type="text/css">
 			a { color: white; }
 		</style>
-		<div class="film-container">
+		<div class="film-container {{ {threedee: format == '3D'} | tokenList }}">
 		    <div class="film">
 		        <div class="title">{{ name }}</div>
 		        <div class="ratings">
@@ -27,7 +27,8 @@
 		ratings: {"rt":00, "imdb":0.0},
 		times: ["Showtimes Unavailable"],
 		poster: "http://college-social.com/content/uploads/2014/03/not-found.png",
-		imdbUrl: '#'
+		imdbUrl: '#',
+		format: ''
 	})
 	</script>
 	<style type="text/css">
@@ -68,7 +69,12 @@
 
 	.film {
 	    background: rgba(0,0,0,0.5);
-	    z-index: -9;
+	    /*z-index: -9;*/
+	}
+
+	.threedee.film-container {
+		background: url('../3d.png') no-repeat 100% 0;
+		right: 0px;
 	}
 
 	.film-background {

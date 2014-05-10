@@ -21,20 +21,31 @@
   var DummyMovieService = {
     getMovies: function(cinemaId) {
       return $.get('example_cineworld_data.json')
+    },
+    getPerformances: function(cinemaId) {
+      return $.get('example_cineworld_performances_data.json')
     }
   }
   var RealMovieService = {
     getMovies: function(cinemaId) {
       return $.get('/cinema-api/cinema/'+cinemaId)
+    },
+    getPerformances: function(cinemaId) {
+      return $.get('/cinema-api/cinema/'+cinemaId+"/performances")
     }
   }
+  
   var MovieService = DummyMovieService
+
+
+  var filmList = function() {return document.querySelector("#films-list")}
 
 
   var addToMoviesList = function(films) {
     function filmToMovie(f) {
       var fakeTimes = ['Showtimes unavailable']
       return {
+        id: f.cineworldId,
         times: fakeTimes,
         ratings: {imdb: '-', rt: f.criticRating},
         name: f.title, 
@@ -43,23 +54,34 @@
         format: f.format
       }
     }
-    document.querySelector("#films-list").movies = films.map(filmToMovie)
+    filmList().movies = films.map(filmToMovie)
+  }
+
+  var updateMoviesWithShowtimes = function(performances) {
+    function toShowtime(performance) {
+      return performance.time
+    }
+    filmList().movies.forEach(function(movie) {  
+      movie.times = (performances[movie.id] || []).map(toShowtime)
+    })
   }
 
   function sortFilms() {
-    document.querySelector("#films-list").movies.sort(function(a,b) {return (b.ratings.rt || 0) - (a.ratings.rt || 0)})
+    filmList().movies.sort(function(a,b) {return (b.ratings.rt || 0) - (a.ratings.rt || 0)})
   }
   </script>
-<script type="text/javascript">
-//Routing, requires FinchJS.
-    //require.define(['Finch',''])
-  $(window).load(function() {
-    Finch.route("cinema/:id", function(id) {
-      var cards = MovieService.getMovies(66).then(addToMoviesList)
+
+  <script type="text/javascript">
+  //Routing, requires FinchJS.
+      //require.define(['Finch',''])
+    $(window).load(function() {
+      Finch.route("cinema/:id", function(id) {
+        MovieService.getMovies(66).then(addToMoviesList)
+        MovieService.getPerformances(66).then(updateMoviesWithShowtimes)
+      })
+      Finch.listen()
     })
-    Finch.listen()
-  })
-</script>
+  </script>
 
 
 

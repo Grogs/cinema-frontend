@@ -5,8 +5,8 @@
 		<style type="text/css">
 			a { color: white; }
 		</style>
-		<div class="film-container {{ {threedee: format == '3D'} | tokenList }}">
-		    <div class="film">
+		<div class="film-container">
+		    <div class="film  {{ {threedee: format == '3D'} | tokenList }}">
 		        <div class="title">{{ name }}</div>
 		        <div class="ratings">
 		        	<div class="rating imdb"><a href="{{ imdbUrl }}">{{ ratings.imdb }}</a></div>
@@ -72,8 +72,8 @@
 	    /*z-index: -9;*/
 	}
 
-	.threedee.film-container {
-		background: url('../3d.png') no-repeat 100% 0;
+	.threedee.film {
+		background: url('../3d.png') no-repeat 100% 0,  rgba(0,0,0,0.5);
 		right: 0px;
 	}
 
@@ -124,6 +124,7 @@
 		border: 5px solid #00ADFF;
 		display: inline-block;
 		margin-right: 10px;
+		margin-bottom: 8px;
 	}
 
 	</style>

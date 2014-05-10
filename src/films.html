@@ -76,8 +76,12 @@
       //require.define(['Finch',''])
     $(window).load(function() {
       Finch.route("cinema/:id", function(id) {
-        MovieService.getMovies(66).then(addToMoviesList)
-        MovieService.getPerformances(66).then(updateMoviesWithShowtimes)
+        var updateMovies = MovieService.getMovies(66).then(addToMoviesList)
+        MovieService.getPerformances(66).then(function(performances) {
+          updateMovies.then(function() {
+            updateMoviesWithShowtimes(performances)
+          })
+        })
       })
       Finch.listen()
     })

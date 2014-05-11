@@ -43,10 +43,9 @@
 
   var addToMoviesList = function(films) {
     function filmToMovie(f) {
-      var fakeTimes = ['Showtimes unavailable']
       return {
         id: f.cineworldId,
-        times: fakeTimes,
+        times: [],
         ratings: {imdb: '-', rt: f.criticRating},
         name: f.title, 
         imdbUrl: (f.imdbId ? "http://www.imdb.com/title/tt" + f.imdbId : undefined),
@@ -57,18 +56,42 @@
     filmList().movies = films.map(filmToMovie)
   }
 
+  //16:20 => 16.2
+  function ts2float(timestamp) {
+    function parse(s) {return parseInt(s)}
+    var hm = timestamp.split(/[.:]/).map(parse)
+    return hm[0] + (hm[1]/60)
+  }
+
   var updateMoviesWithShowtimes = function(performances) {
     function toShowtime(performance) {
       return performance.time
     }
+    function isntPast(performance) {
+      var tminus20 = ts2float(new Date(Date.now() - (20 * 60 * 1000)).toTimeString().substring(0,5))
+      return ts2float(performance.time) > tminus20
+    }
     filmList().movies.forEach(function(movie) {  
-      movie.times = (performances[movie.id] || []).map(toShowtime)
+      movie.times = (performances[movie.id].filter(isntPast) || []).map(toShowtime)
     })
   }
 
-  function sortFilms() {
-    filmList().movies.sort(function(a,b) {return (b.ratings.rt || 0) - (a.ratings.rt || 0)})
+  var sorts = {
+    critic: function(a,b) {
+      return (b.ratings.rt || 0) - (a.ratings.rt || 0)
+    },
+    showtime: function(a,b) {
+      return ts2float(a.times[0] || "99:0") - ts2float(b.times[0] || "99:0")
+    }
   }
+  function sortBy(item) {
+      var sort = sorts[item.value]
+      filmList().movies.sort( sort )
+  }
+
+  // function sortFilms() {
+  //   filmList().movies.sort()
+  // }
   </script>
 
   <script type="text/javascript">
@@ -93,7 +116,14 @@
 
 <body> 
   <!-- <a href="#/cinema/66">Click me!</a> -->
-  <a href="javascript:sortFilms()">Sort by RT rating</a>
+  <!-- <a href="javascript:sortFilms()">Sort by RT rating</a> -->
+
+  <select id="ordering" class=".flat" onchange="sortBy(this)">
+    <option value="?" selected="selected">Order by...</option>
+    <option value="critic">RT Critic Rating (Descending)</option>
+    <option value="showtime">Next Showing</option>
+</select>
+
   <div id="films">
     <film-list id="films-list"></film-list>
   </div>

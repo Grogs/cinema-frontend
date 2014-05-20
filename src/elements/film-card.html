@@ -4,6 +4,101 @@
 	<template>
 		<style type="text/css">
 			a { color: white; }
+
+			.film-container:hover {
+				-webkit-transform: scale(1.05,1.07);
+			}
+
+			.film-container {
+			    width: 296px;
+			    height: 434px;
+			    position: relative;
+			    border: solid 4px #4F4F4F;
+			    overflow: hidden;
+			    margin: 5px;
+			    display: inline-block;
+			    transition: all ease 0.2s;
+			}
+
+			.title {
+				font-family: HelveticaNeue-Bold;
+				font-size: 36px;
+				color: #E5E5E5;
+				line-height: 44px;
+				text-shadow: 0px 2px 6px rgba(0,0,0,0.5);
+				text-align: center;
+				margin-top: 20px;
+			}
+
+			.film, 
+			.film-background {
+			    width: 100%;
+			    height: 100%;
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			}
+
+			.film {
+			    background: rgba(0,0,0,0.5);
+			    /*z-index: -9;*/
+			}
+
+			.threedee.film {
+				background: url('../3d.png') no-repeat 100% 0,  rgba(0,0,0,0.5);
+				right: 0px;
+			}
+
+			.film-background {
+			    z-index: -10;
+			    -webkit-filter: blur(3px);
+			    /* Hack to force 3d acceleration */
+		        -webkit-transform: translate3d(0, 0, 0);
+			    margin: 0 -1px 0 0;
+			}
+
+			.ratings {
+				margin-top: 30px;
+				text-align: center;
+			}
+			.rating {
+				font-family: HelveticaNeue-Bold;
+				font-size: 26px;
+				color: #FFFFFF;
+				line-height: 32px;
+				/* imdb rating: */
+				margin: 10px;
+				display: inline-block;
+			}
+			.rt {
+				background-image: url(../rt-icon.svg);
+				background-repeat: no-repeat;
+				padding-left: 37px;
+			}
+			.imdb {
+				background-image: url(../imdb-icon.png);
+				background-repeat: no-repeat;
+				padding-left: 46px;
+			}
+
+			.times {
+				margin: 30px 20px 0 20px;
+				text-align: left;
+			}
+			.time {
+				font-family: HelveticaNeue-Bold;
+				font-size: 20px;
+				color: #E5E5E5;
+				line-height: 25px;
+				padding: 4px;
+				border-radius: 10px;
+				background: #2A353F;
+				border: 5px solid #00ADFF;
+				display: inline-block;
+				margin-right: 10px;
+				margin-bottom: 8px;
+			}
+
 		</style>
 		<div class="film-container">
 		    <div class="film  {{ {threedee: format == '3D'} | tokenList }}">
@@ -31,103 +126,6 @@
 		format: ''
 	})
 	</script>
-	<style type="text/css">
-
-	.film-container:hover {
-		-webkit-transform: scale(1.05,1.07);
-	}
-
-	.film-container {
-	    width: 296px;
-	    height: 434px;
-	    position: relative;
-	    border: solid 4px #4F4F4F;
-	    overflow: hidden;
-	    margin: 5px;
-	    display: inline-block;
-	    transition: all ease 0.2s;
-	}
-
-	.title {
-		font-family: HelveticaNeue-Bold;
-		font-size: 36px;
-		color: #E5E5E5;
-		line-height: 44px;
-		text-shadow: 0px 2px 6px rgba(0,0,0,0.5);
-		text-align: center;
-		margin-top: 20px;
-	}
-
-	.film, 
-	.film-background {
-	    width: 100%;
-	    height: 100%;
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	}
-
-	.film {
-	    background: rgba(0,0,0,0.5);
-	    /*z-index: -9;*/
-	}
-
-	.threedee.film {
-		background: url('../3d.png') no-repeat 100% 0,  rgba(0,0,0,0.5);
-		right: 0px;
-	}
-
-	.film-background {
-	    z-index: -10;
-	    -webkit-filter: blur(3px);
-	    /* Hack to force 3d acceleration */
-        -webkit-transform: translate3d(0, 0, 0);
-	    margin: 0 -1px 0 0;
-	}
-
-	.ratings {
-		margin-top: 30px;
-		text-align: center;
-	}
-	.rating {
-		font-family: HelveticaNeue-Bold;
-		font-size: 26px;
-		color: #FFFFFF;
-		line-height: 32px;
-		/* imdb rating: */
-		margin: 10px;
-		display: inline-block;
-	}
-	.rt {
-		background-image: url(../rt-icon.svg);
-		background-repeat: no-repeat;
-		padding-left: 37px;
-	}
-	.imdb {
-		background-image: url(../imdb-icon.png);
-		background-repeat: no-repeat;
-		padding-left: 46px;
-	}
-
-	.times {
-		margin: 30px 20px 0 20px;
-		text-align: left;
-	}
-	.time {
-		font-family: HelveticaNeue-Bold;
-		font-size: 20px;
-		color: #E5E5E5;
-		line-height: 25px;
-		padding: 4px;
-		border-radius: 10px;
-		background: #2A353F;
-		border: 5px solid #00ADFF;
-		display: inline-block;
-		margin-right: 10px;
-		margin-bottom: 8px;
-	}
-
-	</style>
 </polymer-element>
 
 

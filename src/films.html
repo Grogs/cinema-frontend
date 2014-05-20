@@ -2,6 +2,7 @@
 
 <head>
   <title>London - West India Quay</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=.5  "> -->
   <script src="bower_components/platform/platform.js"></script>
   <script src="bower_components/requirejs/require.js"></script>
   <script src="bower_components/finchjs/finch.js"></script>
@@ -72,7 +73,7 @@
       return ts2float(performance.time) > tminus20
     }
     filmList().movies.forEach(function(movie) {  
-      movie.times = (performances[movie.id].filter(isntPast) || []).map(toShowtime)
+      movie.times = ((performances[movie.id] || []).filter(isntPast) || []).map(toShowtime)
     })
   }
 
@@ -130,5 +131,9 @@
 
   <div id="films">
     <film-list id="films-list"></film-list>
+  </div>
+
+  <div id="attribution">
+    Powered by: <a href="http://www.cineworld.co.uk/">Cineworld's API</a>, <a href="http://www.omdbapi.com/">The OMDb API</a> and <a href="http://www.rottentomatoes.com/">Rotten Tomatoes</a>
   </div>
 </body>

@@ -1,7 +1,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="film-list" attributes="movies">
+<polymer-element name="film-list" attributes="movies loading">
 	<template>
+		<template if="{{ loading }}">
+			<progress />
+		</template>
 		<div class="films-list-container"> 
 		    <template repeat="{{ movie in movies }}">  
 		    	<!-- | sortBy(sortColumn) -->
@@ -18,6 +21,7 @@
 	</template>
 	<script>
 	Polymer('film-list', {
+		loading: true, 
 		movies: [], 
 		sortKey: 'title'
 	})

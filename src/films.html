@@ -103,10 +103,13 @@
       //require.define(['Finch',''])
     $(window).load(function() {
       Finch.route("cinema/:id", function(id) {
-        var updateMovies = MovieService.getMovies(66).then(addToMoviesList)
-        MovieService.getPerformances(66).then(function(performances) {
+        filmList().loading = true
+        filmList().movies = []
+        var updateMovies = MovieService.getMovies(id).then(addToMoviesList)
+        MovieService.getPerformances(id).then(function(performances) {
           updateMovies.then(function() {
             updateMoviesWithShowtimes(performances)
+            filmList().loading = false
           })
         })
       })

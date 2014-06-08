@@ -2,7 +2,7 @@
 
 <head>
   <title>London - West India Quay</title>
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=.5  "> -->
+  <meta name="viewport" content="width=device-width, initial-scale=.5  ">
   <script src="bower_components/platform/platform.js"></script>
   <script src="bower_components/requirejs/require.js"></script>
   <script src="bower_components/finchjs/finch.js"></script>
@@ -14,6 +14,16 @@
   <style type="text/css">
     #films {
         text-align: center;
+    }
+    body {
+      background-color: #111;
+    }
+    #attribution {
+      color: #999;
+      font-family: HelveticaNeue;
+    }
+    #attribution > a {
+      color: #bbb;
     }
   </style>
 
@@ -36,7 +46,7 @@
     }
   }
   
-  var MovieService = DummyMovieService
+  var MovieService = RealMovieService
 
 
   var filmList = function() {return document.querySelector("#films-list")}

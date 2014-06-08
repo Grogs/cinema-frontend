@@ -74,9 +74,31 @@
 			margin: 0;
 		}
 	</style>
-	<script src="bower_components/requirejs/require.js"></script>
-    <!-- <script src="config.js"></script> -->
-    <script src="bower_components/platform/platform.js"></script>
+  <script src="bower_components/platform/platform.js"></script>
+  <script src="bower_components/requirejs/require.js"></script>
+  <link rel="import" href="elements/film-card.html">
+  <!-- <script src="config.js"></script> -->
+
+  <style type="text/css">
+    #films, #top {
+        text-align: center;
+        -webkit-transition:all 1.0s ease-in-out;
+        -moz-transition:all 1.0s ease-in-out;
+        -o-transition:all 1.0s ease-in-out;
+        transition:all 1.0s ease-in-out;
+    }
+    .disabled { display: none; }
+    #films.hidden{
+    	opacity: 0;
+		-webkit-transform: scale(0.001, 0.001);
+    }
+    #top.hidden{
+    	opacity: 0;
+    	margin-top: -9999px;
+    	position: absolute;
+    	visibility: hidden;
+    }
+  </style>
 
 </head>
 
@@ -85,7 +107,12 @@
 		<div id="top">
 			<div id="title">Placeholder</div>
 			<div id="blurb">A better way to find the best films at your local cinema</div>
-			<select id="cinemas" class=".flat">
+			<script type="text/javascript">
+			function selectCinema(e) {
+				location.href = "films.html#/cinema/"+e.value
+			}
+			</script>
+			<select id="cinemas" class=".flat" onchange="selectCinema(this)">
 			    <option value="?" selected="selected">Select Cinema</option>
 			    <option value="43">London - Bexleyheath</option>
 			    <option value="44">London - Chelsea</option>
@@ -99,10 +126,24 @@
 			    <option value="52">London - Staples Corner</option>
 			    <option value="53">London - The O2, Greenwich </option>
 			    <option value="54">London - Wandsworth</option>
-			    <option value="55">London - West India Quay</option>
+			    <option value="66">London - West India Quay</option>
 			    <option value="56">London - Wood Green</option>
 			</select>
 		</div>
+
+  <div id="films" class="hidden disabled">
+    <film-card 
+      name="Locke" 
+      poster="http://www.cineworld.co.uk/assets/media/films/7223_poster_large.jpg" 
+      times="['2:15','4:20']" 
+      ratings="{'imdb' : 7.3, 'rt':53}"></film-card>
+
+    <film-card name="The Amazing Spider-Man 2" poster="http://www.cineworld.co.uk/assets/media/films/6589_poster_large.jpg" times="['3:15','4:20']" ratings="{'imdb' : 7.3, 'rt':73}"></film-card>
+
+    <film-card name="The Wolf Of Wall Street" poster="http://www.cineworld.co.uk/assets/media/films/7282_poster_large.jpg" times="['3:15','7:20']" ratings="{'imdb' : 8.3, 'rt':73}"></film-card>
+  
+  </div>
+
 
 		<div id="description">
 			<h3>What?</h3>

@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="film-card" attributes="name poster ratings times imdbUrl format">
+<polymer-element name="film-card" attributes="name poster ratings performances imdbUrl format">
 	<template>
 		<style type="text/css">
 			a { color: white; }
@@ -112,8 +112,10 @@
 		        	<div class="rating rt">{{ ratings.rt }}</div>
 		        </div>
 		        <div class="times">
-		        <template repeat="{{ time in times }}">
-		        	<div class="time">{{ time }}</div>
+		        <template repeat="{{ performance in performances }}">
+		        	<a href="{{ performance.booking_url }}">
+		        		<div class="time">{{ performance.time }}</div>
+					</a>
 		        </template>
 		        </div>
 		    </div>
@@ -124,7 +126,7 @@
 	Polymer('film-card', {
 		title: "Undefined",
 		ratings: {"rt":00, "imdb":0.0},
-		times: ["Showtimes Unavailable"],
+		performances: [{time:"Showtimes Unavailable", booking_url:"#"}],
 		poster: "http://college-social.com/content/uploads/2014/03/not-found.png",
 		imdbUrl: '#',
 		format: ''

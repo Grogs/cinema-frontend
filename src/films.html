@@ -14,6 +14,7 @@
   <style type="text/css">
     #films {
         text-align: center;
+        margin-top: 6px;
     }
     body {
       background-color: #111;
@@ -25,6 +26,31 @@
     #attribution > a {
       color: #bbb;
     }
+
+    select#ordering {
+      font-size: 20px;
+      border: 0px;
+      border-bottom: 3px solid #860000;
+      border-radius: 0 0 10px 10px;
+      color: white;
+      padding: 6px;
+      width: 300px;
+      margin-top: 0px;
+      -webkit-appearance: none;
+      background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50px' height='50px'><polyline points='46.139,15.518 25.166,36.49 4.193,15.519' fill='white'/></svg>") right no-repeat;      
+      background-color: #640F0F;
+      background-position: right 5px top 9px;
+      background-size: 18px 18px;
+    }
+
+    body {
+      margin-top: 0px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
   </style>
 
   <script type="text/javascript">
@@ -75,15 +101,12 @@
   }
 
   var updateMoviesWithShowtimes = function(performances) {
-    function toShowtime(performance) {
-      return performance.time
-    }
     function isntPast(performance) {
       var tminus20 = ts2float(new Date(Date.now() - (20 * 60 * 1000)).toTimeString().substring(0,5))
       return ts2float(performance.time) > tminus20
     }
     filmList().movies.forEach(function(movie) {  
-      movie.times = ((performances[movie.id] || []).filter(isntPast) || []).map(toShowtime)
+      movie.times = ((performances[movie.id] || []).filter(isntPast) || [])
     })
   }
 
@@ -134,13 +157,14 @@
 <body> 
   <!-- <a href="#/cinema/66">Click me!</a> -->
   <!-- <a href="javascript:sortFilms()">Sort by RT rating</a> -->
-
-  <select id="ordering" class=".flat" onchange="sortBy(this)">
-    <option value="?" selected="selected">Order by...</option>
-    <option value="imdb">IMDb Rating (Descending)</option>
-    <option value="critic">RT Critic Rating (Descending)</option>
-    <option value="showtime">Next Showing</option>
-  </select>
+  <div class="center">
+    <select id="ordering" class=".flat" onchange="sortBy(this)">
+      <option value="?" selected="selected">Order by...</option>
+      <option value="imdb">IMDb Rating (Descending)</option>
+      <option value="critic">RT Critic Rating (Descending)</option>
+      <option value="showtime">Next Showing</option>
+    </select>
+  </div>
 
   <div id="films">
     <film-list id="films-list"></film-list>

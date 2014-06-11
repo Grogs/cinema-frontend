@@ -72,7 +72,7 @@
     }
   }
   
-  var MovieService = RealMovieService
+  var MovieService = DummyMovieService
 
 
   var filmList = function() {return document.querySelector("#films-list")}
@@ -82,7 +82,7 @@
     function filmToMovie(f) {
       return {
         id: f.cineworldId,
-        times: [],
+        performances: [],
         ratings: {imdb: f.rating, rt: f.criticRating},
         name: f.title, 
         imdbUrl: (f.imdbId ? "http://www.imdb.com/title/tt" + f.imdbId : undefined),
@@ -106,7 +106,7 @@
       return ts2float(performance.time) > tminus20
     }
     filmList().movies.forEach(function(movie) {  
-      movie.times = ((performances[movie.id] || []).filter(isntPast) || [])
+      movie.performances = ((performances[movie.id] || []).filter(isntPast) || [])
     })
   }
 
@@ -118,7 +118,7 @@
       return (b.ratings.imdb || 0) - (a.ratings.imdb || 0)
     },
     showtime: function(a,b) {
-      return ts2float(a.times[0] || "99:0") - ts2float(b.times[0] || "99:0")
+      return ts2float((a.performances[0]||{}).time || "99:0") - ts2float((b.performances[0]||{}).time || "99:0")
     }
   }
   function sortBy(item) {

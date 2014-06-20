@@ -1,6 +1,6 @@
 Cineworld Listing/Rating App
 ====
-This simple webapp lets you see film listings with inline ratings for cineworld cinemas. You can [see it in action here](http://greg.me/cineworld/).
+This simple webapp lets you see film listings with inline ratings for cineworld cinemas. You can [see it in action here](http://gregd.me/cineworld/).
 
 Getting Started
 ====

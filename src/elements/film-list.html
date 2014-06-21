@@ -21,6 +21,21 @@
 		      		></film-card>
 		    </template>
 		</div>
+		<template if="{{ !loading &&  movies.length == 0 }}">
+			<style type="text/css">
+				div.label {
+					color: white;
+					font-family: Calibri, Verdana, Arial, sans-serif;
+					font-size: 30px;
+					margin-top: 12px;
+				}
+			</style>
+			<div style="margin: 50px 0 50px 0;">
+				<i class="fa fa-frown-o fa-5x" style="color:white;"></i>
+				<div class="label">No movies!</div>
+			</div>
+		</template>
+
 	</template>
 	<script>
 	Polymer('film-list', {

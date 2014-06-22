@@ -101,7 +101,7 @@
       return {
         id: f.cineworldId,
         performances: [],
-        ratings: {imdb: f.rating, rt: f.criticRating},
+        ratings: {imdb: f.rating, rt: f.criticRating, rtAudience:f.audienceRating},
         name: f.title, 
         imdbUrl: (f.imdbId ? "http://www.imdb.com/title/tt" + f.imdbId : undefined),
         poster: f.posterUrl,

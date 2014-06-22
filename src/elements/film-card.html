@@ -78,6 +78,11 @@
 				background-repeat: no-repeat;
 				padding-left: 37px;
 			}
+			.rtAudience {
+				background-image: url(../rt-audience-icon.png);
+				background-repeat: no-repeat;
+				padding-left: 37px;
+			}
 			.imdb {
 				background-image: url(../imdb-icon.png);
 				background-repeat: no-repeat;
@@ -110,6 +115,7 @@
 		        <div class="ratings">
 		        	<div class="rating imdb"><a href="{{ imdbUrl }}">{{ ratings.imdb }}</a></div>
 		        	<div class="rating rt">{{ ratings.rt }}</div>
+		        	<div class="rating rtAudience">{{ ratings.rtAudience }}</div>
 		        </div>
 		        <div class="times">
 		        <template repeat="{{ performance in performances }}">
@@ -125,7 +131,7 @@
 	<script>
 	Polymer('film-card', {
 		title: "Undefined",
-		ratings: {"rt":00, "imdb":0.0},
+		ratings: {"rt":00, "imdb":0.0, "rtAudience":0},
 		performances: [{time:"Showtimes Unavailable", booking_url:"#"}],
 		poster: "http://college-social.com/content/uploads/2014/03/not-found.png",
 		imdbUrl: '#',

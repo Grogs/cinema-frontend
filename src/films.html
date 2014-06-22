@@ -132,6 +132,9 @@
     critic: function(a,b) {
       return (b.ratings.rt || 0) - (a.ratings.rt || 0)
     },
+    audience: function(a,b) {
+      return (b.ratings.rtAudience || 0) - (a.ratings.rtAudience || 0)
+    },
     imdb: function(a,b) {
       return (b.ratings.imdb || 0) - (a.ratings.imdb || 0)
     },
@@ -187,6 +190,7 @@
           <option value="?" selected="selected">Order by...</option>
           <option value="imdb">IMDb Rating (Descending)</option>
           <option value="critic">RT Critic Rating (Descending)</option>
+          <option value="critic">RT Audience Rating (Descending)</option>
           <option value="showtime">Next Showing</option>
         </select>
       </div>

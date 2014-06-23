@@ -74,23 +74,34 @@
   <script type="text/javascript">
   //depends on jQuery
   var DummyMovieService = {
-    getMovies: function(cinemaId) {
+    getMovies: function(cinemaId, date) {
       return $.get('example_cineworld_data.json')
     },
-    getPerformances: function(cinemaId) {
+    getPerformances: function(cinemaId, date) {
       return $.get('example_cineworld_performances_data.json')
     }
   }
-  var RealMovieService = {
-    getMovies: function(cinemaId) {
-      return $.get('/cinema-api/cinema/'+cinemaId)
+  var LocalMovieService = {
+    getMovies: function(cinemaId, date) {
+      return $.get('http://localhost:9001/api/films/'+cinemaId+'/'+date)
     },
-    getPerformances: function(cinemaId) {
-      return $.get('/cinema-api/cinema/'+cinemaId+"/performances")
+    getPerformances: function(cinemaId, date) {
+      return $.get('http://localhost:9001/api/performances/'+cinemaId+'/'+date)
+    }
+  }
+  var RealMovieService = {
+    getMovies: function(cinemaId, date) {
+      return $.get('/cinema-api/films/'+cinemaId+'/'+date)
+    },
+    getPerformances: function(cinemaId, date) {
+      return $.get('/cinema-api/performances/'+cinemaId+'/'+date)
     }
   }
   
   var MovieService = RealMovieService
+
+  var selectedDate = "today"
+  function selectDate(item) {selectedDate = item.value}
 
 
   var filmList = function() {return document.querySelector("#films-list")}
@@ -121,7 +132,7 @@
   var updateMoviesWithShowtimes = function(performances) {
     function isntPast(performance) {
       var tminus20 = ts2float(new Date(Date.now() - (20 * 60 * 1000)).toTimeString().substring(0,5))
-      return ts2float(performance.time) > tminus20
+      return ts2float(performance.time) > tminus20 && (selectedDate == "today")
     }
     filmList().movies.forEach(function(movie) {  
       movie.performances = ((performances[movie.id] || []).filter(isntPast) || [])
@@ -159,8 +170,8 @@
       Finch.route("cinema/:id", function(args) {
         filmList().loading = true
         filmList().movies = []
-        var updateMovies = MovieService.getMovies(args.id).then(addToMoviesList)
-        MovieService.getPerformances(args.id).then(function(performances) {
+        var updateMovies = MovieService.getMovies(args.id, selectedDate).then(addToMoviesList)
+        MovieService.getPerformances(args.id, selectedDate).then(function(performances) {
           updateMovies.then(function() {
             updateMoviesWithShowtimes(performances)
             filmList().loading = false
@@ -180,8 +191,9 @@
     <div class="menu">
       <div class="menu-group">
         <i class="fa fa-calendar fa-lg" style="color:white;"></i>
-        <select id="date" class="menu" <!-- onchange="sortBy(this)" -->>
-          <option value="?" selected="selected" label="Today">Showing Today</option>
+        <select id="date" class="menu" onchange="selectDate(this)">
+          <option value="today" selected="selected">Today</option>
+          <option value="tomorrow" selected="selected">Tomorrow</option>
         </select>
       </div>
       <div class="menu-group">

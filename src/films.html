@@ -101,7 +101,8 @@
   var MovieService = RealMovieService
 
   var selectedDate = "today"
-  function selectDate(item) {selectedDate = item.value}
+  var selectedCinema = ""
+  function selectDate(item) {selectedDate = item.value; load(selectedCinema, selectedDate)}
 
 
   var filmList = function() {return document.querySelector("#films-list")}
@@ -132,7 +133,7 @@
   var updateMoviesWithShowtimes = function(performances) {
     function isntPast(performance) {
       var tminus20 = ts2float(new Date(Date.now() - (20 * 60 * 1000)).toTimeString().substring(0,5))
-      return ts2float(performance.time) > tminus20 && (selectedDate == "today")
+      return ts2float(performance.time) > tminus20 || (selectedDate != "today")
     }
     filmList().movies.forEach(function(movie) {  
       movie.performances = ((performances[movie.id] || []).filter(isntPast) || [])
@@ -158,25 +159,32 @@
       filmList().movies.sort( sort )
   }
 
+  function load(cinema, date) {
+    filmList().loading = true
+    filmList().movies = []
+    var updateMovies = MovieService.getMovies(cinema, selectedDate).then(addToMoviesList)
+    MovieService.getPerformances(cinema, selectedDate).then(function(performances) {
+      updateMovies.then(function() {
+        updateMoviesWithShowtimes(performances)
+        filmList().loading = false
+      })
+    })
+  }
+
+
   // function sortFilms() {
   //   filmList().movies.sort()
   // }
   </script>
 
   <script type="text/javascript">
+
   //Routing, requires FinchJS.
       //require.define(['Finch',''])
     $(window).load(function() {
       Finch.route("cinema/:id", function(args) {
-        filmList().loading = true
-        filmList().movies = []
-        var updateMovies = MovieService.getMovies(args.id, selectedDate).then(addToMoviesList)
-        MovieService.getPerformances(args.id, selectedDate).then(function(performances) {
-          updateMovies.then(function() {
-            updateMoviesWithShowtimes(performances)
-            filmList().loading = false
-          })
-        })
+        selectedCinema = args.id
+        load(args.id, "today")
       })
       Finch.listen()
     })
@@ -193,7 +201,7 @@
         <i class="fa fa-calendar fa-lg" style="color:white;"></i>
         <select id="date" class="menu" onchange="selectDate(this)">
           <option value="today" selected="selected">Today</option>
-          <option value="tomorrow" selected="selected">Tomorrow</option>
+          <option value="tomorrow">Tomorrow</option>
         </select>
       </div>
       <div class="menu-group">

@@ -1,6 +1,6 @@
-Cineworld Listing/Rating App
+UK Cinema Listing/Rating App
 ====
-This simple webapp lets you see film listings with inline ratings for cineworld cinemas. You can [see it in action here](http://gregd.me/cineworld/).
+This simple webapp lets you see film listings with inline ratings for Cineworld and Odeon cinemas. You can [see it in action here](http://gregd.me/cineworld/).
 
 Getting Started
 ====

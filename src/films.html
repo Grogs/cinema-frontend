@@ -9,6 +9,7 @@
   <script src="jquery-1.9.1.js"></script>
   <link rel="import" href="elements/film-card.html">
   <link rel="import" href="elements/film-list.html">
+  <link rel="import" href="elements/x-filter.html">
   <link href="bower_components/components-font-awesome/css/font-awesome.css" rel="stylesheet">
   <!-- <script src="config.js"></script> -->
 
@@ -35,7 +36,7 @@
       display: inline-block;
       padding-left: 20px;
     }
-    select.menu, filter {
+    select.menu, x-filter {
       padding: 8px 30px 8px 10px;
       margin: 7px 7px 7px 1px;
       border-radius: 10px;
@@ -274,11 +275,12 @@
           <option value="critic">RT Audience Rating</option>
         </select>
       </div>
- --><!--       <div class="menu-group">
-        <i class="fa fa-filter fa-lg" style="color:white;"></i>
-        <filter />
-      </div>
  -->
+       <div class="menu-group">
+        <i class="fa fa-filter fa-lg" style="color:white;"></i>
+        <x-filter />
+      </div>
+
 
     </div>
   </header>

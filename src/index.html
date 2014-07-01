@@ -30,7 +30,7 @@
 		}
 		
 		#top {
-			background: #690B0B url(movie_reel.svg) no-repeat 45% 255%;
+			background: #690B0B url(movie_reel.svg) no-repeat 45% 195%;
 			background-size: 350px 400px;
 			text-align: center;
 			padding-bottom: 150px;
@@ -102,6 +102,9 @@
     	position: absolute;
     	visibility: hidden;
     }
+    select#odeon-cinemas {
+    	margin-top: 20px;
+    }
   </style>
 
 </head>
@@ -116,94 +119,234 @@
 				location.href = "films.html#/cinema/"+e.value
 			}
 			</script>
-			<select id="cinemas" class=".flat" onchange="selectCinema(this)">
-			    <option value="?" selected="selected">Select Cinema</option>
-				<optgroup label="London cinemas">
-					<option value="45">London - Bexleyheath</option>
-					<option value="10">London - Chelsea</option>
-					<option value="22">London - Enfield</option>
-					<option value="25">London - Feltham</option>
-					<option value="26">London - Fulham Road</option>
-					<option value="30">London - Hammersmith</option>
-					<option value="32">London - Haymarket</option>
-					<option value="37">London - Ilford</option>
-					<option value="53">London - Shaftesbury Avenue</option>
-					<option value="60">London - Staples Corner</option>
-					<option value="79">London - The O2, Greenwich </option>
-					<option value="65">London - Wandsworth</option>
-					<option value="89">London - Wembley</option>
-					<option value="66">London - West India Quay</option>
-					<option value="70">London - Wood Green</option>
-				</optgroup>
-				<optgroup label="All other cinemas">
-					<option value="1">Aberdeen - Queens Links</option>
-					<option value="78">Aberdeen - Union Square</option>
-					<option value="87">Aldershot</option>
-					<option value="12">Ashford</option>
-					<option value="34">Bedford</option>
-					<option value="56">Birmingham</option>
-					<option value="67">Boldon Tyne and Wear</option>
-					<option value="72">Bolton</option>
-					<option value="73">Bradford</option>
-					<option value="2">Braintree</option>
-					<option value="3">Brighton</option>
-					<option value="4">Bristol</option>
-					<option value="5">Burton upon Trent</option>
-					<option value="6">Bury St. Edmunds</option>
-					<option value="7">Cambridge</option>
-					<option value="8">Cardiff</option>
-					<option value="9">Castleford</option>
-					<option value="11">Cheltenham</option>
-					<option value="14">Chesterfield</option>
-					<option value="15">Chichester</option>
-					<option value="16">Crawley</option>
-					<option value="17">Didcot</option>
-					<option value="18">Didsbury</option>
-					<option value="19">Dundee</option>
-					<option value="20">Eastbourne</option>
-					<option value="21">Edinburgh</option>
-					<option value="24">Falkirk</option>
-					<option value="88">Glasgow - IMAX at GSC</option>
-					<option value="27">Glasgow - Parkhead</option>
-					<option value="28">Glasgow - Renfrew Street</option>
-					<option value="90">Gloucester Quays</option>
-					<option value="31">Harlow</option>
-					<option value="76">Haverhill</option>
-					<option value="33">High Wycombe</option>
-					<option value="35">Hull</option>
-					<option value="36">Huntingdon</option>
-					<option value="38">Ipswich</option>
-					<option value="39">Isle Of Wight</option>
-					<option value="40">Jersey</option>
-					<option value="83">Leigh</option>
-					<option value="41">Liverpool</option>
-					<option value="42">Llandudno</option>
-					<option value="43">Luton</option>
-					<option value="44">Middlesbrough</option>
-					<option value="46">Milton Keynes</option>
-					<option value="47">Newport Wales</option>
-					<option value="48">Northampton</option>
-					<option value="49">Nottingham</option>
-					<option value="50">Rochester</option>
-					<option value="51">Rugby</option>
-					<option value="52">Runcorn</option>
-					<option value="54">Sheffield</option>
-					<option value="55">Shrewsbury</option>
-					<option value="57">Solihull</option>
-					<option value="58">Southampton</option>
-					<option value="59">St Helens</option>
-					<option value="91">St Neots</option>
-					<option value="61">Stevenage</option>
-					<option value="62">Stockport</option>
-					<option value="63">Swindon</option>
-					<option value="92">Telford</option>
-					<option value="64">Wakefield</option>
-					<option value="68">Weymouth</option>
-					<option value="77">Witney</option>
-					<option value="69">Wolverhampton</option>
-					<option value="71">Yeovil</option>
-				</optgroup>
-			</select>
+			<div>
+				<select id="cinemas" class=".flat" onchange="selectCinema(this)">
+				    <option value="?" selected="selected">Cineworld cinemas...</option>
+					<optgroup label="London cinemas">
+						<option value="45">London - Bexleyheath</option>
+						<option value="10">London - Chelsea</option>
+						<option value="22">London - Enfield</option>
+						<option value="25">London - Feltham</option>
+						<option value="26">London - Fulham Road</option>
+						<option value="30">London - Hammersmith</option>
+						<option value="32">London - Haymarket</option>
+						<option value="37">London - Ilford</option>
+						<option value="53">London - Shaftesbury Avenue</option>
+						<option value="60">London - Staples Corner</option>
+						<option value="79">London - The O2, Greenwich </option>
+						<option value="65">London - Wandsworth</option>
+						<option value="89">London - Wembley</option>
+						<option value="66">London - West India Quay</option>
+						<option value="70">London - Wood Green</option>
+					</optgroup>
+					<optgroup label="All other cinemas">
+						<option value="1">Aberdeen - Queens Links</option>
+						<option value="78">Aberdeen - Union Square</option>
+						<option value="87">Aldershot</option>
+						<option value="12">Ashford</option>
+						<option value="34">Bedford</option>
+						<option value="56">Birmingham</option>
+						<option value="67">Boldon Tyne and Wear</option>
+						<option value="72">Bolton</option>
+						<option value="73">Bradford</option>
+						<option value="2">Braintree</option>
+						<option value="3">Brighton</option>
+						<option value="4">Bristol</option>
+						<option value="5">Burton upon Trent</option>
+						<option value="6">Bury St. Edmunds</option>
+						<option value="7">Cambridge</option>
+						<option value="8">Cardiff</option>
+						<option value="9">Castleford</option>
+						<option value="11">Cheltenham</option>
+						<option value="14">Chesterfield</option>
+						<option value="15">Chichester</option>
+						<option value="16">Crawley</option>
+						<option value="17">Didcot</option>
+						<option value="18">Didsbury</option>
+						<option value="19">Dundee</option>
+						<option value="20">Eastbourne</option>
+						<option value="21">Edinburgh</option>
+						<option value="24">Falkirk</option>
+						<option value="88">Glasgow - IMAX at GSC</option>
+						<option value="27">Glasgow - Parkhead</option>
+						<option value="28">Glasgow - Renfrew Street</option>
+						<option value="90">Gloucester Quays</option>
+						<option value="31">Harlow</option>
+						<option value="76">Haverhill</option>
+						<option value="33">High Wycombe</option>
+						<option value="35">Hull</option>
+						<option value="36">Huntingdon</option>
+						<option value="38">Ipswich</option>
+						<option value="39">Isle Of Wight</option>
+						<option value="40">Jersey</option>
+						<option value="83">Leigh</option>
+						<option value="41">Liverpool</option>
+						<option value="42">Llandudno</option>
+						<option value="43">Luton</option>
+						<option value="44">Middlesbrough</option>
+						<option value="46">Milton Keynes</option>
+						<option value="47">Newport Wales</option>
+						<option value="48">Northampton</option>
+						<option value="49">Nottingham</option>
+						<option value="50">Rochester</option>
+						<option value="51">Rugby</option>
+						<option value="52">Runcorn</option>
+						<option value="54">Sheffield</option>
+						<option value="55">Shrewsbury</option>
+						<option value="57">Solihull</option>
+						<option value="58">Southampton</option>
+						<option value="59">St Helens</option>
+						<option value="91">St Neots</option>
+						<option value="61">Stevenage</option>
+						<option value="62">Stockport</option>
+						<option value="63">Swindon</option>
+						<option value="92">Telford</option>
+						<option value="64">Wakefield</option>
+						<option value="68">Weymouth</option>
+						<option value="77">Witney</option>
+						<option value="69">Wolverhampton</option>
+						<option value="71">Yeovil</option>
+					</optgroup>
+				</select>
+			</div>
+
+			<div>
+				<select id="odeon-cinemas" class=".flat" onchange="selectCinema(this)">
+				    <option value="?" selected="selected">Odeon cinemas...</option>
+					<optgroup label="London cinemas">
+						<option value="6883">Odeon BFI IMAX</option>
+						<option value="6906">Odeon Camden</option>
+						<option value="1503">Odeon Covent Garden</option>
+						<option value="6897">Odeon Greenwich</option>
+						<option value="6900">Odeon Holloway</option>
+						<option value="1516">Odeon Kensington</option>
+						<option value="6889">Odeon Lee Valley</option>
+						<option value="1517">Odeon Leicester Square</option>
+						<option value="1518">Odeon Marble Arch</option>
+						<option value="6904">Odeon Muswell Hill</option>
+						<option value="1520">Odeon Panton Street</option>
+						<option value="6909">Odeon Putney</option>
+						<option value="6927">Odeon South Woodford</option>
+						<option value="6916">Odeon Streatham</option>
+						<option value="6777">Odeon Studios</option>
+						<option value="6907">Odeon Surrey Quays</option>
+						<option value="5208">Odeon Swiss Cottage</option>
+						<option value="1522">Odeon Tottenham Court Road</option>
+						<option value="1523">Odeon West End</option>
+						<option value="6155">Odeon Whiteleys</option>
+						<option value="6850">Odeon Whiteleys - The Lounge</option>
+						<option value="6925">Odeon Wimbledon</option>
+					</optgroup>
+			      	<optgroup label="All other cinemas">
+						<option value="7165">Odeon Andover</option>
+						<option value="7167">Odeon Aylesbury</option>
+						<option value="7235">Odeon Ayr</option>
+						<option value="7168">Odeon Banbury</option>
+						<option value="6879">Odeon Barnet</option>
+						<option value="7169">Odeon Basingstoke</option>
+						<option value="7236">Odeon Bath</option>
+						<option value="6881">Odeon Beckenham</option>
+						<option value="7170">Odeon Belfast</option>
+						<option value="7171">Odeon Birmingham Broadway Plaza</option>
+						<option value="7172">Odeon Birmingham New Street</option>
+						<option value="7173">Odeon Blackpool</option>
+						<option value="6795">Odeon Blanchardstown</option>
+						<option value="7175">Odeon Bournemouth</option>
+						<option value="7177">Odeon Bracknell</option>
+						<option value="4826">Odeon Braehead</option>
+						<option value="7180">Odeon Bridgend</option>
+						<option value="7179">Odeon Brighton</option>
+						<option value="7178">Odeon Bristol</option>
+						<option value="7181">Odeon Bromborough</option>
+						<option value="7182">Odeon Canterbury</option>
+						<option value="7183">Odeon Cardiff</option>
+						<option value="7184">Odeon Cavan</option>
+						<option value="7185">Odeon Chatham</option>
+						<option value="7186">Odeon Chelmsford</option>
+						<option value="7187">Odeon Colchester</option>
+						<option value="6796">Odeon Coolock</option>
+						<option value="7188">Odeon Coventry</option>
+						<option value="7189">Odeon Crewe</option>
+						<option value="7190">Odeon Darlington</option>
+						<option value="7191">Odeon Derby</option>
+						<option value="7192">Odeon Dorchester</option>
+						<option value="7194">Odeon Dudley Merry Hill</option>
+						<option value="7238">Odeon Dumfries</option>
+						<option value="7237">Odeon Dundee</option>
+						<option value="7195">Odeon Dunfermline</option>
+						<option value="7196">Odeon East Kilbride</option>
+						<option value="7239">Odeon Edinburgh Lothian Road</option>
+						<option value="7242">Odeon Edinburgh Wester Hailes</option>
+						<option value="7197">Odeon Epsom</option>
+						<option value="6955">Odeon Esher</option>
+						<option value="7198">Odeon Exeter</option>
+						<option value="7199">Odeon Gerrards Cross</option>
+						<option value="7240">Odeon Glasgow Springfield Quay</option>
+						<option value="7200">Odeon Guildford</option>
+						<option value="7201">Odeon Harrogate</option>
+						<option value="7202">Odeon Hastings</option>
+						<option value="7203">Odeon Hatfield</option>
+						<option value="7204">Odeon Hereford</option>
+						<option value="7969">Odeon Hereford</option>
+						<option value="7205">Odeon Huddersfield</option>
+						<option value="7206">Odeon Hull</option>
+						<option value="7207">Odeon Kettering</option>
+						<option value="7241">Odeon Kilmarnock</option>
+						<option value="6903">Odeon Kingston</option>
+						<option value="7176">Odeon Leeds-Bradford</option>
+						<option value="7211">Odeon Leicester</option>
+						<option value="7156">Odeon Limerick</option>
+						<option value="7213">Odeon Lincoln</option>
+						<option value="7215">Odeon Liverpool ONE</option>
+						<option value="7214">Odeon Liverpool Switch Island</option>
+						<option value="7217">Odeon Llanelli</option>
+						<option value="7218">Odeon Loughborough</option>
+						<option value="7221">Odeon Maidenhead</option>
+						<option value="7220">Odeon Maidstone</option>
+						<option value="7222">Odeon Manchester</option>
+						<option value="7223">Odeon Mansfield</option>
+						<option value="4841">Odeon Metrocentre</option>
+						<option value="7227">Odeon Milton Keynes</option>
+						<option value="7228">Odeon Naas</option>
+						<option value="7229">Odeon Newark</option>
+						<option value="6645">Odeon Newbridge</option>
+						<option value="7231">Odeon Norwich</option>
+						<option value="7234">Odeon Nuneaton</option>
+						<option value="7243">Odeon Oxford George Street</option>
+						<option value="7244">Odeon Oxford Magdalen Street</option>
+						<option value="7193">Odeon Point Village</option>
+						<option value="4869">Odeon Port Solent</option>
+						<option value="7247">Odeon Portlaoise</option>
+						<option value="7249">Odeon Preston</option>
+						<option value="6910">Odeon Richmond</option>
+						<option value="6911">Odeon Richmond Studio</option>
+						<option value="7254">Odeon Rochdale</option>
+						<option value="7255">Odeon Salisbury</option>
+						<option value="7257">Odeon Sheffield</option>
+						<option value="4858">Odeon Silverlink</option>
+						<option value="7260">Odeon Southampton</option>
+						<option value="7259">Odeon Southend</option>
+						<option value="7262">Odeon Stillorgan</option>
+						<option value="7264">Odeon Stoke</option>
+						<option value="7161">Odeon Swadlincote</option>
+						<option value="7266">Odeon Swansea</option>
+						<option value="7268">Odeon Tamworth</option>
+						<option value="7269">Odeon Taunton</option>
+						<option value="7270">Odeon Telford</option>
+						<option value="4881">Odeon Thurrock</option>
+						<option value="7224">Odeon Trafford Centre</option>
+						<option value="7763">Odeon Trowbridge</option>
+						<option value="7273">Odeon Tunbridge Wells</option>
+						<option value="7274">Odeon Uxbridge</option>
+						<option value="7275">Odeon Warrington</option>
+						<option value="7276">Odeon Waterford</option>
+						<option value="7457">Odeon West Bromwich</option>
+						<option value="7277">Odeon Weston-Super-Mare</option>
+						<option value="7278">Odeon Worcester</option>
+						<option value="4887">Odeon Wrexham</option>
+					</optgroup>
+				</select>
+			</div>
 		</div>
 
   <div id="films" class="hidden disabled">
@@ -228,7 +371,7 @@
 			<p>I want to easily, at a glance, figure out which film to go see at the cinema. I can't do that with my cinema's website - I have to google/research each film individually. </p>
 
 			<h3>What's next?</h3>
-			<p>Currently only Cineworld cinemas are supported; I plan to add more. Beyond that, I want to receive notifications about upcoming high rated films.</p>
+			<p>Currently only Cineworld and Odeon cinemas are supported; I may add more. Beyond that, I want to receive notifications about upcoming high rated films.</p>
 
 		</div>
 	</div>

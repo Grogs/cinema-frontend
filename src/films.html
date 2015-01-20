@@ -1,7 +1,7 @@
 <!doctype html>
 
 <head>
-  <title>London - West India Quay</title>
+  <title>Fulfilmed</title>
   <meta name="viewport" content="width=device-width, initial-scale=.5  ">
   <script src="bower_components/platform/platform.js"></script>
   <script src="bower_components/requirejs/require.js"></script>
@@ -119,7 +119,7 @@
     }
   }
   
-  var MovieService = DummyMovieService
+  var MovieService = RealMovieService
 
   var selectedDate = "today"
   var selectedCinema = ""
@@ -259,7 +259,7 @@
       <div class="menu-group">
         <i class="fa fa-sort-alpha-asc fa-lg" style="color:white;"></i>
         <select id="ordering" class="menu" onchange="sortBy(this)">
-          <option value="?" selected="selected">Order by...</option>
+          <option value="?" selected="selected" disabled>Order by...</option>
           <option value="imdb">IMDb Rating (Descending)</option>
           <option value="critic">RT Critic Rating (Descending)</option>
           <option value="audience">RT Audience Rating (Descending)</option>
@@ -275,11 +275,11 @@
           <option value="critic">RT Audience Rating</option>
         </select>
       </div>
- -->
        <div class="menu-group">
         <i class="fa fa-filter fa-lg" style="color:white;"></i>
         <x-filter />
       </div>
+ -->
 
 
     </div>

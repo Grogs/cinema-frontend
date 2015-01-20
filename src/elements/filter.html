@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="x-filter" attributes="available selected">
+<polymer-element name="filter" attributes="available selected">
 	<template>
         <select id="filter" class="menu" onchange="addFilter(this)">
           <option value="?" selected="selected" disabled>+</option>
@@ -11,7 +11,7 @@
         </select>
 	</template>
 	<script>
-	Polymer('x-filter', {
+	Polymer('filter', {
 		available: {},
 		selected: []
 	})

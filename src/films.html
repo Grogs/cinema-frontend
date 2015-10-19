@@ -104,18 +104,18 @@
   }
   var LocalMovieService = {
     getMovies: function(cinemaId, date) {
-      return $.get('http://localhost:9001/api/films/'+cinemaId+'/'+date)
+      return $.get('http://localhost:9001/api/cinema/'+cinemaId+'/films/'+date)
     },
     getPerformances: function(cinemaId, date) {
-      return $.get('http://localhost:9001/api/performances/'+cinemaId+'/'+date)
+      return $.get('http://localhost:9001/api/cinema/'+cinemaId+'/performances/'+date)
     }
   }
   var RealMovieService = {
     getMovies: function(cinemaId, date) {
-      return $.get('/cinema-api/films/'+cinemaId+'/'+date)
+      return $.get('/cinema-api/cinema/'+cinemaId+'/films/'+date)
     },
     getPerformances: function(cinemaId, date) {
-      return $.get('/cinema-api/performances/'+cinemaId+'/'+date)
+      return $.get('/cinema-api/cinema/'+cinemaId+'/performances/'+date)
     }
   }
   

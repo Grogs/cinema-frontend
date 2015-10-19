@@ -1,6 +1,7 @@
 <!doctype html>
 
 <head>
+	<meta charset="utf-8" />
 	<title>Fulfilmed - Cineworld/Odeon Movie Listings with ratings</title>
 
 	<style type="text/css">
@@ -31,7 +32,7 @@
 		}
 		
 		#top {
-			background: #690B0B url(movie_reel.svg) no-repeat 45% 195%;
+			background: #690B0B url(movie_reel.svg) no-repeat 45% 170%;
 			background-size: 350px 400px;
 			text-align: center;
 			padding-bottom: 150px;
@@ -103,7 +104,7 @@
     	position: absolute;
     	visibility: hidden;
     }
-    select#odeon-cinemas {
+    select#odeon-cinemas, select#cinema-city-cinemas-hungary {
     	margin-top: 20px;
     }
   </style>
@@ -345,6 +346,36 @@
 						<option value="7277">Odeon Weston-Super-Mare</option>
 						<option value="7278">Odeon Worcester</option>
 						<option value="4887">Odeon Wrexham</option>
+					</optgroup>
+				</select>
+			</div>
+
+			<div>
+				<select id="cinema-city-cinemas-hungary" class=".flat" onchange="selectCinema(this)">
+				    <option value="?" selected="selected" disabled>Cinema City (Hungary) cinemas...</option>
+					<optgroup label="Budapest">
+						<option value="1010202">Cinema City Allee</option>
+						<option value="1010203">Cinema City Aréna</option>
+						<option value="1010206">Cinema City Duna Pláza</option>
+						<option value="1010217">Cinema City WestEnd</option>
+						<option value="1010218">Cinema City MOM Park</option>
+						<option value="1010219">Palace Mammut</option>
+						<option value="1010220">Cinema City Campona</option>
+					</optgroup>
+					<optgroup label="Countryside">
+						<option value="1010201">Cinema City Alba</option>
+						<option value="1010204">Cinema City Balaton</option>
+						<option value="1010205">Cinema City Debrecen</option>
+						<option value="1010207">Cinema City Győr</option>
+						<option value="1010208">Cinema City Kaposvár</option>
+						<option value="1010209">Cinema City Miskolc</option>
+						<option value="1010210">Cinema City Nyíregyháza</option>
+						<option value="1010211">Cinema City Pécs</option>
+						<option value="1010212">Cinema City Savaria</option>
+						<option value="1010213">Cinema City Sopron</option>
+						<option value="1010214">Cinema City Szeged</option>
+						<option value="1010215">Cinema City Szolnok</option>
+						<option value="1010216">Cinema City Zalaegerszeg</option>
 					</optgroup>
 				</select>
 			</div>
